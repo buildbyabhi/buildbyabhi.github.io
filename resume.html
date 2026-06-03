@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Abhishek Kumar — Resume</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary: #4f46e5;
+      --primary-light: #6366f1;
+      --dark: #0f172a;
+      --text: #1e293b;
+      --muted: #475569;
+      --light: #f8fafc;
+      --border: #e2e8f0;
+      --accent: #7c3aed;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f1f5f9;
+      color: var(--text);
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+
+    .page {
+      max-width: 820px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+    }
+
+    /* Header */
+    .header {
+      background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #312e81 100%);
+      padding: 44px 48px 36px;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    .header::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 220px; height: 220px;
+      border-radius: 50%;
+      background: rgba(99,102,241,0.15);
+    }
+    .header::after {
+      content: '';
+      position: absolute;
+      bottom: -40px; left: 30%;
+      width: 150px; height: 150px;
+      border-radius: 50%;
+      background: rgba(124,58,237,0.1);
+    }
+    .name { font-size: 36px; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 6px; }
+    .title-tag {
+      display: inline-block;
+      background: rgba(99,102,241,0.3);
+      border: 1px solid rgba(99,102,241,0.5);
+      border-radius: 20px;
+      padding: 4px 14px;
+      font-size: 13px;
+      font-weight: 500;
+      color: #c7d2fe;
+      margin-bottom: 20px;
+    }
+    .contact-row {
+      display: flex; flex-wrap: wrap; gap: 16px;
+      font-size: 13px; color: #c7d2fe;
+    }
+    .contact-item { display: flex; align-items: center; gap: 6px; }
+    .contact-item a { color: #a5b4fc; text-decoration: none; }
+    .contact-item a:hover { color: white; }
+    .dot { color: rgba(255,255,255,0.3); }
+
+    /* Body */
+    .body { padding: 36px 48px; }
+
+    /* Section */
+    .section { margin-bottom: 32px; }
+    .section-header {
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 18px;
+    }
+    .section-icon {
+      width: 28px; height: 28px; border-radius: 7px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px;
+    }
+    .section-title {
+      font-size: 15px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 1px;
+      color: var(--dark);
+    }
+    .section-line {
+      flex: 1; height: 1px;
+      background: linear-gradient(to right, var(--border), transparent);
+    }
+
+    /* Education */
+    .edu-card {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      padding: 16px 20px;
+      background: var(--light);
+      border-radius: 12px;
+      border-left: 3px solid var(--primary);
+    }
+    .edu-degree { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+    .edu-school { font-size: 13px; color: var(--muted); }
+    .edu-year {
+      font-size: 12px; font-weight: 600;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      white-space: nowrap;
+    }
+
+    .edu-row { display: flex; gap: 16px; margin-top: 12px; }
+    .edu-mini {
+      flex: 1; padding: 12px 16px;
+      background: var(--light);
+      border-radius: 10px;
+      border-left: 3px solid var(--border);
+    }
+    .edu-mini-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
+    .edu-mini-val { font-size: 14px; font-weight: 600; margin-top: 2px; }
+
+    /* Skills */
+    .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .skill-cat {
+      background: var(--light);
+      border-radius: 12px;
+      padding: 14px 16px;
+    }
+    .skill-cat-name {
+      font-size: 11px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.8px;
+      color: var(--primary); margin-bottom: 10px;
+    }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .skill-tag {
+      padding: 3px 10px; border-radius: 20px;
+      background: white; border: 1px solid var(--border);
+      font-size: 12px; font-weight: 500; color: var(--text);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* Projects */
+    .project-card {
+      background: var(--light);
+      border-radius: 12px;
+      padding: 18px 20px;
+      margin-bottom: 12px;
+      border-left: 3px solid var(--primary);
+      position: relative;
+    }
+    .project-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
+    .project-name { font-size: 15px; font-weight: 700; }
+    .project-links { display: flex; gap: 8px; }
+    .project-link {
+      font-size: 11px; font-weight: 600;
+      padding: 3px 10px; border-radius: 20px;
+      text-decoration: none;
+      border: 1px solid;
+    }
+    .link-github { color: var(--dark); border-color: var(--border); background: white; }
+    .link-live { color: white; border-color: var(--primary); background: var(--primary); }
+    .project-desc { font-size: 13px; color: var(--muted); line-height: 1.6; margin-bottom: 10px; }
+    .project-stack { display: flex; flex-wrap: wrap; gap: 6px; }
+    .stack-tag {
+      padding: 2px 8px; border-radius: 4px;
+      background: rgba(79,70,229,0.08);
+      border: 1px solid rgba(79,70,229,0.2);
+      font-size: 11px; font-weight: 600;
+      color: var(--primary);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* Print button */
+    .print-bar {
+      text-align: center; padding: 24px;
+      background: var(--light);
+      border-top: 1px solid var(--border);
+    }
+    .print-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 28px; border-radius: 10px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: white; font-size: 14px; font-weight: 600;
+      border: none; cursor: pointer; font-family: 'Inter', sans-serif;
+      box-shadow: 0 4px 14px rgba(79,70,229,0.3);
+      transition: all 0.2s;
+    }
+    .print-btn:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(79,70,229,0.4); }
+
+    /* Print styles */
+    @media print {
+      body { background: white; padding: 0; }
+      .page { box-shadow: none; border-radius: 0; max-width: 100%; }
+      .print-bar { display: none; }
+      .header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .project-card, .edu-card, .skill-cat { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="name">Abhishek Kumar</div>
+    <div class="title-tag">🚀 Full Stack Developer & AI Enthusiast</div>
+    <div class="contact-row">
+      <div class="contact-item">📧 <a href="mailto:kumarkumarabhishek285@gmail.com">kumarkumarabhishek285@gmail.com</a></div>
+      <span class="dot">•</span>
+      <div class="contact-item">🌐 <a href="https://buildbyabhi.github.io" target="_blank">buildbyabhi.github.io</a></div>
+      <span class="dot">•</span>
+      <div class="contact-item">💻 <a href="https://github.com/buildbyabhi" target="_blank">github.com/buildbyabhi</a></div>
+      <span class="dot">•</span>
+      <div class="contact-item">🔗 <a href="https://linkedin.com/in/buildbyabhi" target="_blank">linkedin.com/in/buildbyabhi</a></div>
+    </div>
+  </div>
+
+  <!-- Body -->
+  <div class="body">
+
+    <!-- Education -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon">🎓</div>
+        <div class="section-title">Education</div>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="edu-card">
+        <div>
+          <div class="edu-degree">B.Tech — Computer Engineering</div>
+          <div class="edu-school">National Institute of Technology, Kurukshetra (NIT KKR)</div>
+        </div>
+        <div class="edu-year">2022 – 2027</div>
+      </div>
+
+      <div class="edu-row">
+        <div class="edu-mini">
+          <div class="edu-mini-label">Class 12th (CBSE)</div>
+          <div class="edu-mini-val">70%</div>
+        </div>
+        <div class="edu-mini">
+          <div class="edu-mini-label">Class 10th (CBSE)</div>
+          <div class="edu-mini-val">75%</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Skills -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon">🛠</div>
+        <div class="section-title">Technical Skills</div>
+        <div class="section-line"></div>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-cat">
+          <div class="skill-cat-name">Languages</div>
+          <div class="skill-tags">
+            <span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">TypeScript</span>
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">HTML5</span>
+            <span class="skill-tag">CSS3</span>
+          </div>
+        </div>
+        <div class="skill-cat">
+          <div class="skill-cat-name">Frontend</div>
+          <div class="skill-tags">
+            <span class="skill-tag">React 19</span>
+            <span class="skill-tag">Vite</span>
+            <span class="skill-tag">Next.js</span>
+            <span class="skill-tag">Tailwind</span>
+          </div>
+        </div>
+        <div class="skill-cat">
+          <div class="skill-cat-name">Backend & Database</div>
+          <div class="skill-tags">
+            <span class="skill-tag">Node.js</span>
+            <span class="skill-tag">Express</span>
+            <span class="skill-tag">MongoDB</span>
+            <span class="skill-tag">JWT</span>
+            <span class="skill-tag">REST API</span>
+          </div>
+        </div>
+        <div class="skill-cat">
+          <div class="skill-cat-name">Tools & Platforms</div>
+          <div class="skill-tags">
+            <span class="skill-tag">Git</span>
+            <span class="skill-tag">GitHub</span>
+            <span class="skill-tag">Vercel</span>
+            <span class="skill-tag">Render</span>
+            <span class="skill-tag">VS Code</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Projects -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon">🚀</div>
+        <div class="section-title">Projects</div>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-top">
+          <div class="project-name">💰 ExpensePro — Full Stack Expense Tracker</div>
+          <div class="project-links">
+            <a href="https://github.com/buildbyabhi/expensepro-fullstack" class="project-link link-github" target="_blank">GitHub</a>
+            <a href="https://expensepro-fullstack.vercel.app" class="project-link link-live" target="_blank">Live ↗</a>
+          </div>
+        </div>
+        <div class="project-desc">A premium full-stack expense tracker with JWT authentication, MongoDB Atlas cloud database, dark glassmorphism UI, Recharts (Pie, Bar, Area), 19 expense categories, PDF export, and admin panel with user management.</div>
+        <div class="project-stack">
+          <span class="stack-tag">React 19</span>
+          <span class="stack-tag">Node.js</span>
+          <span class="stack-tag">Express</span>
+          <span class="stack-tag">MongoDB</span>
+          <span class="stack-tag">JWT</span>
+          <span class="stack-tag">Recharts</span>
+          <span class="stack-tag">Vercel + Render</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-top">
+          <div class="project-name">🤖 GeminiChat — AI Chatbot</div>
+          <div class="project-links">
+            <a href="https://github.com/buildbyabhi/gemini-chat" class="project-link link-github" target="_blank">GitHub</a>
+            <a href="https://geeminiai.vercel.app" class="project-link link-live" target="_blank">Live ↗</a>
+          </div>
+        </div>
+        <div class="project-desc">A ChatGPT-style AI assistant powered by Nvidia Nemotron 120B via OpenRouter API. Features multi-turn conversations, markdown rendering with code syntax highlighting, suggestion chips, and conversation history.</div>
+        <div class="project-stack">
+          <span class="stack-tag">React</span>
+          <span class="stack-tag">Vite</span>
+          <span class="stack-tag">OpenRouter API</span>
+          <span class="stack-tag">Nvidia Nemotron 120B</span>
+          <span class="stack-tag">Vercel</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-top">
+          <div class="project-name">🌿 Fresh Factory — Cafe Website</div>
+          <div class="project-links">
+            <a href="https://github.com/buildbyabhi/fresh-factory" class="project-link link-github" target="_blank">GitHub</a>
+            <a href="https://buildbyabhi.github.io/fresh-factory" class="project-link link-live" target="_blank">Live ↗</a>
+          </div>
+        </div>
+        <div class="project-desc">A modern organic cafe website built with React JSX (no bundler). Features interactive menu tabs, table booking system, mobile-responsive design, and smooth hover animations.</div>
+        <div class="project-stack">
+          <span class="stack-tag">React JSX</span>
+          <span class="stack-tag">CSS3</span>
+          <span class="stack-tag">GitHub Pages</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-top">
+          <div class="project-name">🥷 CoC Ninja — Game Progress Tracker</div>
+          <div class="project-links">
+            <a href="https://github.com/buildbyabhi/coc-ninja-progress-tracker" class="project-link link-github" target="_blank">GitHub</a>
+            <a href="https://buildbyabhi.github.io/coc-ninja-progress-tracker" class="project-link link-live" target="_blank">Live ↗</a>
+          </div>
+        </div>
+        <div class="project-desc">An offline Clash of Clans progress tracker with localStorage persistence. Tracks heroes, troops, buildings, and war stats with a dashboard summary and local data storage.</div>
+        <div class="project-stack">
+          <span class="stack-tag">HTML5</span>
+          <span class="stack-tag">CSS3</span>
+          <span class="stack-tag">JavaScript</span>
+          <span class="stack-tag">LocalStorage</span>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end body -->
+
+  <!-- Print bar -->
+  <div class="print-bar">
+    <button class="print-btn" onclick="window.print()">
+      🖨️ Download / Print as PDF
+    </button>
+  </div>
+
+</div><!-- end page -->
+
+</body>
+</html>
